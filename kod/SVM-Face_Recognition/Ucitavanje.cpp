@@ -1,20 +1,11 @@
-//#include <Uzorak.h>
-#include <stdio.h>
+#include "Ucitavanje.h"
+#include "Uzorak.h"
+#include "Greska.h"
+
 #include <fstream>
+#include <string>
 
 using namespace std;
-
-class Ucitavanje
-{
-public:
-	Ucitavanje(char* dat);
-	Uzorak ucitajUzorak();
-
-
-private:
-	char imeDatoteke[40];
-
-};
 
 Ucitavanje::Ucitavanje(char* dat)
 {

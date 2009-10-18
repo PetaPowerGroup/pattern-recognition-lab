@@ -191,7 +191,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\SVM-Face_Recognition.cpp"
+				RelativePath="..\..\..\source\Greska.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\source\SVM-Face_Recognition.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\source\Ucitavanje.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\source\Uzorak.cpp"
 				>
 			</File>
 		</Filter>
@@ -201,15 +213,15 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Greska.h"
+				RelativePath="..\..\..\source\Greska.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Ucitavanje.h"
+				RelativePath="..\..\..\source\Ucitavanje.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Uzorak.h"
+				RelativePath="..\..\..\source\Uzorak.h"
 				>
 			</File>
 		</Filter>
