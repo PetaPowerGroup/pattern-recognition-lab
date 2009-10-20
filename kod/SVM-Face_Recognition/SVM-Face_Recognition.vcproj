@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;"
+				AdditionalIncludeDirectories="&quot;E:\Moji projekti\biblioteke\boost_1_40_0&quot;;&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
@@ -191,19 +191,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\..\source\Greska.cpp"
+				RelativePath=".\Greska.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\source\SVM-Face_Recognition.cpp"
+				RelativePath=".\SVM-Face_Recognition.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\source\Ucitavanje.cpp"
+				RelativePath=".\Ucitavanje.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\source\Uzorak.cpp"
+				RelativePath=".\Uzorak.cpp"
 				>
 			</File>
 		</Filter>
@@ -213,15 +213,15 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\..\source\Greska.h"
+				RelativePath=".\Greska.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\source\Ucitavanje.h"
+				RelativePath=".\Ucitavanje.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\source\Uzorak.h"
+				RelativePath=".\Uzorak.h"
 				>
 			</File>
 		</Filter>

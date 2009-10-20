@@ -21,7 +21,7 @@ Uzorak::Uzorak(int sirina, int visina)
 unsigned char Uzorak::getPixel(int red, int stupac)
 {
 	if ( (red<1 || red>visina) && (stupac<1 || stupac>sirina) )
-		throw Greska("GRESKA: Provjera raspona\n\tVrijednost red/stupac izvan raspona");
+		throw Greska("GRESKA: Provjera raspona\n\tVrijednost parametra 'red'/'stupac' izvan raspona");
 	
 	return pixeli[red*sirina+stupac];
 }
@@ -29,31 +29,31 @@ unsigned char Uzorak::getPixel(int red, int stupac)
 unsigned char Uzorak::getPixel(int pozicija)
 {
 	if ( pozicija<0 || pozicija>sirina*visina )
-		throw Greska("GRESKA: Provjera raspona\n\tVrijednost izvan raspona");
+		throw Greska("GRESKA: Provjera raspona\n\tVrijednost parametra 'pozicija' izvan raspona");
 	
 	return pixeli[pozicija];
 }
 
-void Uzorak::setPixel(int red, int stupac, unsigned char nijansa)
+void Uzorak::setPixel(int red, int stupac, int nijansa)
 {
 	if (nijansa<0 || nijansa>255)
-		throw Greska("GRESKA: Provjera raspona\n\tVrijednost Nijanse izvan raspona");
+		throw Greska("GRESKA: Provjera raspona\n\tVrijednost parametra 'nijansa' izvan raspona");
 
 	if ( (red<1 || red>visina) && (stupac<1 || stupac>sirina) )
-		throw Greska("GRESKA: Provjera raspona\n\tVrijednost red/stupac izvan raspona");
+		throw Greska("GRESKA: Provjera raspona\n\tVrijednost parametra 'red'/'stupac' izvan raspona");
 
-	pixeli[red*sirina+stupac] = nijansa;
+	pixeli[red*sirina+stupac] = (unsigned char)nijansa;
 }
 
-void Uzorak::setPixel(int pozicija, unsigned char nijansa)
+void Uzorak::setPixel(int pozicija, int nijansa)
 {
 	if (nijansa<0 || nijansa>255)
-		throw Greska("GRESKA: Provjera raspona\n\tVrijednost Nijanse izvan raspona");
+		throw Greska("GRESKA: Provjera raspona\n\tVrijednost parametra 'nijansa' izvan raspona");
 
 	if (pozicija<0 || pozicija>sirina*visina)
-		throw Greska("GRESKA: Provjera raspona\n\tVrijednost izvan raspona");
+		throw Greska("GRESKA: Provjera raspona\n\tVrijednost parametra 'pozicija' izvan raspona");
 
-	pixeli[pozicija] = nijansa;
+	pixeli[pozicija] = (unsigned char)nijansa;
 }
 
 int Uzorak::getVelicina()

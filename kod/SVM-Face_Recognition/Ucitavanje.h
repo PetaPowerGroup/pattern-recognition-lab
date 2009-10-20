@@ -8,7 +8,7 @@ public:
 
 
 private:
-	char imeDatoteke[40];
+	char imeDatoteke[50];
 
 };
 
