@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\Moji projekti\biblioteke\boost_1_40_0&quot;;&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;"
+				AdditionalIncludeDirectories="C:\Boost\boost_1_38_0;&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
