@@ -12,6 +12,11 @@ Ucitavanje::Ucitavanje(char* dat)
 	strcpy_s(imeDatoteke, dat);
 }
 
+Ucitavanje::Ucitavanje(string dat)
+{
+	strcpy_s(imeDatoteke, dat.c_str());
+}
+
 Uzorak Ucitavanje::ucitajUzorak()
 {
 	ifstream datoteka;

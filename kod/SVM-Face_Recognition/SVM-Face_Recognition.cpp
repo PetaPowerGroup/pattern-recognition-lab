@@ -2,6 +2,7 @@
 #include "Uzorak.h"
 #include "Greska.h"
 #include "Ucitavanje.h"
+#include "Baza.h"
 
 #include <iostream>
 
@@ -12,6 +13,7 @@ string Ucitavanje::path = "";
 int main()
 {
 	char c;
+	Baza baza(371, 4, 2);
 	try
 	{
 		cout<<"Hello"<<endl;
@@ -22,6 +24,11 @@ int main()
 		cin>>noviPath;
 		Ucitavanje::setPath(noviPath);
 		cout<<"postavili ste stazu na: "<<Ucitavanje::getPath()<<endl;
+
+		//testiranje baze
+		baza.getUzorak(3,2).print();/* <-----ovako se od baze zatrazi uzorak 4. osobe i 3. slike
+		*(indeksi u bazi poèinju od 0, kao i standardni niz tipa int[10])
+		*/
 
 		Uzorak uzorak1(5,5);
 
