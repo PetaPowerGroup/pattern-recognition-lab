@@ -1,0 +1,5 @@
+Prije pokretanja:
+Baza s licima - raspakirati zip na neku lokaciju na disku. (npr. D:\face, neka slika tada ima stazu D:\face\001_1_2.nrm)
+
+Pokretanje programa:
+Upisati u ljusku lokaciju kazala gdje su sve slike (za gornji pimjer "D:\face" ili "D:\face\"). Program æe sve slike tražiti u tom kazalu.

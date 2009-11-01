@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="C:\Boost\boost_1_38_0;&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\boost\boost_1_39&quot;;C:\Boost\boost_1_38_0;&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
@@ -60,6 +60,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
 				AssemblyDebug="1"
 				TargetMachine="1"

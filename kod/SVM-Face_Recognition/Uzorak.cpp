@@ -70,3 +70,10 @@ int Uzorak::getVisina()
 {
 	return visina;
 }
+
+void Uzorak::print()
+{//TODO ljepsi print - po retcima i stupcima
+	for (int i=0; i<this->getVelicina(); ++i)
+		printf("%d", this->getPixel(i));
+	printf("\n");
+}

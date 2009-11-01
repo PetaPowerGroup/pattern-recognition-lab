@@ -9,15 +9,20 @@ using namespace std;
 
 Ucitavanje::Ucitavanje(char* dat)
 {
-	strcpy(imeDatoteke, dat);
+	strcpy_s(imeDatoteke, dat);
 }
 
 Uzorak Ucitavanje::ucitajUzorak()
 {
 	ifstream datoteka;
 	Uzorak uzorak(64,64);
+	string ime(imeDatoteke);
+	if(path.substr(path.size()-1, 1).compare("\\")!=0)
+		path.append("\\");
+	ime=path+ime;
+	printf("%s\n", ime.c_str());
 
-	datoteka.open(imeDatoteke,ios::in|ios::binary);
+	datoteka.open(ime.c_str(),ios::in|ios::binary);
 	if (!datoteka.is_open())
 		throw Greska("GRESKA: Provjera pristupa\n\tDatoteka nije otvorena.");
 
@@ -35,4 +40,13 @@ Uzorak Ucitavanje::ucitajUzorak()
 
 	return uzorak;
 }
+
+void Ucitavanje::setPath(string newPath)
+{
+	Ucitavanje::path=newPath;
+}
 		
+string Ucitavanje::getPath()
+{
+	return Ucitavanje::path;
+}

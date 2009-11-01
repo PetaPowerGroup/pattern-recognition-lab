@@ -11,6 +11,7 @@ public:
 	int getVelicina();
 	int getSirina();
 	int getVisina();
+	void print();
 
 private:
 	unsigned char* pixeli;
