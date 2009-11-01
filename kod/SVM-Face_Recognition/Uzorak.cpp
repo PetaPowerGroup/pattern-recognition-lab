@@ -3,6 +3,9 @@
 #include "Greska.h"
 
 #include <malloc.h>
+#include <iostream>
+
+using namespace std;
 
 
 Uzorak::Uzorak(int sirina, int visina)
@@ -73,7 +76,13 @@ int Uzorak::getVisina()
 
 void Uzorak::print()
 {//TODO ljepsi print - po retcima i stupcima
-	for (int i=0; i<this->getVelicina(); ++i)
-		printf("%d", this->getPixel(i));
-	printf("\n");
+	for (int i=0; i<visina; i++)
+	{
+		for (int j=0; j<sirina; j++)
+		{
+			//cout<<(int)pixeli[i*visina+j]<<" ";
+			cout<<pixeli[i*visina+j]<<" ";		//prekul izgleda, pravi obris face ;D
+		}
+		cout<<"\n";
+	}
 }

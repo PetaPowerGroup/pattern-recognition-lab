@@ -20,8 +20,10 @@ int main()
 
 		//gdje se na disku nalazi kazalo sa slikama lica.
 		string noviPath;
-		cout<<"Unesite stazu do kazala sa slikama lica (raspakiranog)";
-		cin>>noviPath;
+		cout<<"Unesite stazu do kazala sa slikama lica (raspakiranog)\n";
+		
+		getline(cin,noviPath);
+		
 		Ucitavanje::setPath(noviPath);
 		cout<<"postavili ste stazu na: "<<Ucitavanje::getPath()<<endl;
 
@@ -30,16 +32,16 @@ int main()
 		*(indeksi u bazi poèinju od 0, kao i standardni niz tipa int[10])
 		*/
 
-		Uzorak uzorak1(5,5);
+		//Uzorak uzorak1(5,5);
 
 		//cout<<"Pixel (1,1) ima nijansu: " << (int)uzorak1.getPixel(1,1) << endl;
 
 		//uzorak1.setPixel(1,1,300);
-		cout<<"Pixel (1,1) ima nijansu: " << (int)uzorak1.getPixel(1,1) << endl;
+		/*cout<<"Pixel (1,1) ima nijansu: " << (int)uzorak1.getPixel(1,1) << endl;
 
 		Ucitavanje datoteka("000_2_1.nrm");
 		Uzorak uzorak2 = datoteka.ucitajUzorak();
-		uzorak2.print();
+		uzorak2.print();*/
 
 		/*for (int i=0; i<uzorak2.getVelicina(); i++)
 		{
@@ -63,7 +65,6 @@ int main()
 		cout<<"Greška uhvaæena, nepoznata"<<endl;
 	}
 
-	cin>>c;
 	return 0;
 
 }
