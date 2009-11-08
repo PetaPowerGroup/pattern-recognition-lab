@@ -2,19 +2,22 @@
 #define KERNEL_H
 
 #include "base.h"
+#include "tree.h"
+class node; 
 
 class kernel {
 
 public:
-	virtual double calculate(Element &i, Element &j) = 0;
+	virtual double calculate(PElement i, PElement j) = 0;
+	virtual node* create_node() = 0;
 
 };
 
 class linear_kernel: public kernel{
 
 public:
-	double calculate(Element &i, Element &j);
-
+	double calculate(PElement i, PElement j);
+	node* create_node();
 };
 
 #endif
