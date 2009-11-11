@@ -204,6 +204,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Trainer.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Ucitavanje.cpp"
 				>
 			</File>
@@ -223,6 +227,10 @@
 			</File>
 			<File
 				RelativePath=".\Greska.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Trainer.h"
 				>
 			</File>
 			<File
