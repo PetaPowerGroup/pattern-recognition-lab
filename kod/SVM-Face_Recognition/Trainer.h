@@ -1,9 +1,10 @@
 #pragma once
+class Baza;
 
-class Trainer
+class Trainer//za sada nam ne treba jer æemo preko datoteke trenirati svm - mozda jednog dana, ali ipak... YAGNI :)
 {
 public:
 	Trainer(void);
 	~Trainer(void);
-	struct svm_model train();
+	void /*struct svm_model*/ svm_train(Baza baza);
 };

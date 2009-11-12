@@ -200,7 +200,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ObradeniUzorak.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SkupObradenihUzoraka.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SVM-Face_Recognition.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\libsvm\svm.cpp"
 				>
 			</File>
 			<File
@@ -227,6 +239,18 @@
 			</File>
 			<File
 				RelativePath=".\Greska.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ObradeniUzorak.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SkupObradenihUzoraka.h"
+				>
+			</File>
+			<File
+				RelativePath=".\libsvm\svm.h"
 				>
 			</File>
 			<File

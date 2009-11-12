@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include "Greska.h"
 using namespace std;
 
 Baza::Baza(int brojOsoba, int brojSnimanja, int brojSlika){
@@ -13,13 +14,14 @@ Baza::Baza(int brojOsoba, int brojSnimanja, int brojSlika){
 	this->brojSnimanja=brojSnimanja;
 	this->brojSlika=brojSlika;
 }
-Uzorak Baza::getUzorak(int osoba, int slika){
-	int snimanje=slika/2;
-	slika=slika%2;
+Uzorak Baza::getUzorak(int osoba, int uzorak){
+	int snimanje=uzorak/2;
+	int slika=uzorak%2;
 	if (sanity_check(osoba, snimanje, slika)){
 		Ucitavanje datoteka(oblikujNaziv(osoba, snimanje, slika));
 		return datoteka.ucitajUzorak();
-	}
+	} else
+		throw Greska("GRESKA: Pristupa se podatku iz baze koji ne postoji.");
 }
 bool Baza::sanity_check(int osoba, int snimanje, int slika){
 	return (osoba>=0 && osoba<this->brojOsoba
@@ -39,4 +41,11 @@ string Baza::oblikujNaziv(int osoba, int snimanje, int slika){
 	naziv=out.str();
 
 	return naziv;
+}
+
+int Baza::getBrojOsoba(){
+	return brojOsoba;
+}
+int Baza::getBrojUzoraka(){
+	return brojSnimanja*brojSlika;
 }

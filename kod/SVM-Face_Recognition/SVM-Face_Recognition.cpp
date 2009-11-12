@@ -3,32 +3,41 @@
 #include "Greska.h"
 #include "Ucitavanje.h"
 #include "Baza.h"
+#include "SkupObradenihUzoraka.h"
 
 #include <iostream>
 
+#define BROJ_LJUDI 371
+#define BROJ_SLIKA_PO_COVJEKU 4
+#define BROJ_VERZIJA_SLIKE 2
+
 using namespace std;
 
-string Ucitavanje::path = "";
+string Ucitavanje::path="";//gdje se na disku nalazi kazalo sa slikama lica.
 
 int main()
 {
-	char c;
-	Baza baza(371, 4, 2);
+	Baza baza(BROJ_LJUDI, BROJ_SLIKA_PO_COVJEKU, BROJ_VERZIJA_SLIKE);
 	try
-	{
-		cout<<"Hello"<<endl;
-
-		//gdje se na disku nalazi kazalo sa slikama lica.
-		string noviPath;
-		cout<<"Unesite stazu do kazala sa slikama lica (raspakiranog)\n";
+	{	
+		string noviPath("D:\\face");
+		Ucitavanje::setPath(noviPath);
+		cout<<"Unesite stazu do kazala sa slikama lica (raspakiranog) ili pritisnite enter ako se nalazi na D:\\face\n";
 		
 		getline(cin,noviPath);
 		
-		Ucitavanje::setPath(noviPath);
+		if (noviPath.compare("")!=0){
+			Ucitavanje::setPath(noviPath);
+		}
 		cout<<"postavili ste stazu na: "<<Ucitavanje::getPath()<<endl;
 
+		SkupObradenihUzoraka nasSkupUzoraka(baza); //stvara skup uzoraka u obliku prikladnom za obradu u memoriji
+		nasSkupUzoraka.izvuciKorisneZnacajke(); //TODO actually napraviti ovo :D   ... Napomena: razmisliti da li æe ovo biti metoda koja æe na mjestu mijenjati klasu ili æe kreirati novu izmijenjenu i vratiti ju
+		nasSkupUzoraka.writeToFile();
+
 		//testiranje baze
-		baza.getUzorak(3,2).print();/* <-----ovako se od baze zatrazi uzorak 4. osobe i 3. slike
+		/*
+		baza.getUzorak(3,2).print();<-----ovako se od baze zatrazi uzorak 4. osobe i 3. slike
 		*(indeksi u bazi poèinju od 0, kao i standardni niz tipa int[10])
 		*/
 
