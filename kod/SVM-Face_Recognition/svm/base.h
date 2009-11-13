@@ -2,7 +2,8 @@
 #define BASE_H
 
 #include<iostream>
-
+#include<string>
+#include<sstream>
 #include<vector>
 #include<valarray>
 #include<list>

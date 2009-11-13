@@ -65,6 +65,8 @@ int smo::examine(int i1){
 		else 
 			i2 = i_up;
 	}
+	// ako je zadovoljen uvjet optimizacije vrati 0
+	// inace optimiraj dva multiplikatora
 	if (optimal) return 0;
 	if (step(i1,f1,i2))
 		return 1;

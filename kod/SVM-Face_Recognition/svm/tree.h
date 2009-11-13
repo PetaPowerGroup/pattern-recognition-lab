@@ -14,13 +14,15 @@ class algorithm;
 class smo;
 class node {
 protected:
-	node *left;
-	node *right;
-	bool leaf;
-	int  cla;
+	node *left; //lijevo dijete
+	node *right; //desno dijete
+	bool leaf; // je li cvor list
+	int  cla;  // roj klase 
 public:
+	node() : left(NULL), right(NULL),leaf(false) {}
+   ~node(); 
     virtual bool is_leaf();
-	//virtual node* next(PElement e) = 0;
+	virtual node* next(PElement e) = 0;
 	virtual void add_left(node* l);
 	virtual void add_right(node* r);
 	virtual void create(PLagrange alpha, PDElementi elements, PYpsilon ypsilon, double c) = 0;
@@ -34,7 +36,9 @@ private:
 	double b;
 	PElement w;
 public:
-	//node* next(PElement e);
+	linear_node():node(){}
+	~linear_node();
+	node* next(PElement e);
 	void create(PLagrange alpha, PDElementi elements, PYpsilon ypsilon, double c);
 };
 
@@ -51,6 +55,9 @@ public:
 
 */
 
+
+/* zadatak koji se koristi prilikom izgradnje stabla odluke
+ */
 class task {
 public:
 	task(){};
@@ -59,6 +66,9 @@ public:
 	std::vector<group*> *groups;
 };
 
+/* razred koji se brine za izgradnju stabla odluke, ne predstavlja samo stablo 
+   nego prilikom njegove izgradnje vraca pokazivac na korijen
+ */
 class tree {
 private:
 	algorithm *algo;
@@ -67,8 +77,8 @@ private:
 	kernel *ken;
 	double c;
 public:
-	std::vector<group*>* process_initail(PSamples samples, int num); // stvara poèetnu grupu
-	void process_task(); //obradjuje pojedini zadatak iz reda
-	node* train(kernel* ker, algorithm *al, PSamples samp, double ci, int num); // stvara stablo odluke i vraca cvor na korijen
+	std::vector<group*>* process_initail(PSamples samples, int num); 
+	void process_task(); 
+	node* train(kernel* ker, algorithm *al, PSamples samp, double ci, int num); 
 };
 #endif
