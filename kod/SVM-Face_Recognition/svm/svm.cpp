@@ -41,7 +41,7 @@ void svm::train(std::istream &in,int vel){
 	train(sam,max,1);
 }
 
-int svm::clasify(std::string &pat){
+int svm::classify(std::string &pat){
 	double *niz = get_array(pat);
 	PElement e = new Element(niz,vel_uz);
 

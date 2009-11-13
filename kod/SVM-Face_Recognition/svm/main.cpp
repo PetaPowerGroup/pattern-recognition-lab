@@ -12,7 +12,7 @@ int main() {
 	moj->train(dat,2);  // treniranje svm-a
 
 	// klasifikacija uzorka 0.01 -0.01
-	int raz = moj->clasify(string("1:0.01 2:-0.01"));
+	int raz = moj->classify(string("1:-0.01 2:-0.01"));
 	cout<<"Razred je "<<raz<<endl;
 	dat.close();
 	return 0;

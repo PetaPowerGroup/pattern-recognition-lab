@@ -14,6 +14,6 @@ public :
 	svm(kernel *k):ken(k){}
 	void train(PSamples samples, int num, double c);
 	void train(std::istream &in,int vel);
-	int clasify(std::string &pat);
+	int classify(std::string &pat);
 };
 #endif
