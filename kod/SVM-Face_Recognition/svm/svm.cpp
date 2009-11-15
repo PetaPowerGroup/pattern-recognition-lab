@@ -9,6 +9,8 @@ void svm::train(PSamples samples, int num, double c){
 
 double* svm::get_array(std::string &str) {
 	double *niz = new double[vel_uz];
+
+	for (int i=0; i<vel_uz; i++) niz[i]=0; 
 	std::stringstream s(str);
 	std::string str2;
 	while(s>>str2) {
@@ -38,7 +40,7 @@ void svm::train(std::istream &in,int vel){
 		delete [] niz;
 
 	}
-	train(sam,max,1);
+	train(sam,max,2);
 }
 
 int svm::classify(std::string &pat){
