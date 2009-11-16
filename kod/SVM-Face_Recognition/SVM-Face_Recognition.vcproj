@@ -200,6 +200,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\IzlucivanjeZnacajki.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ObradeniUzorak.cpp"
 				>
 			</File>
