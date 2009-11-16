@@ -1,10 +1,13 @@
 #include <string>
+#include <vector>
 using namespace std;
 class Uzorak;
 
 class Baza{
 	public:
 		Baza(int brojOsoba, int brojSnimanja, int brojSlika);
+		int getdir (std::string dir, std::vector<string> &files);
+		std::vector<Uzorak> ucitajCijelu();
 		Uzorak getUzorak(int osoba, int uzorak);
 			/*
 			*osoba: 0<=indeks osobe<brojOsoba

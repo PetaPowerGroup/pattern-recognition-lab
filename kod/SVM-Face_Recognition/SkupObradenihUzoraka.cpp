@@ -3,6 +3,7 @@
 #include "Uzorak.h"
 #include "ObradeniUzorak.h"
 #include "Greska.h"
+#include "Ucitavanje.h"
 #include <vector>
 #include <iostream>
 #include <string>
@@ -23,6 +24,13 @@ SkupObradenihUzoraka::SkupObradenihUzoraka(Baza baza)
 			
 		}
 	}
+}
+
+SkupObradenihUzoraka::SkupObradenihUzoraka()
+{
+	Ucitavanje datoteka("naziv");
+	datoteka.ucitajUzorak();
+
 }
 
 SkupObradenihUzoraka::~SkupObradenihUzoraka(void)

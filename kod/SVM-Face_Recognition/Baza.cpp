@@ -1,18 +1,45 @@
 #include "Baza.h"
 #include "Ucitavanje.h"
 #include "Uzorak.h"
+#include "Greska.h"
 
 #include <sstream>
 #include <string>
 #include <iostream>
 #include <iomanip>
-#include "Greska.h"
+#include <sys/types.h>
+#include <errno.h>
+#include <vector>
 using namespace std;
 
 Baza::Baza(int brojOsoba, int brojSnimanja, int brojSlika){
 	this->brojOsoba=brojOsoba;
 	this->brojSnimanja=brojSnimanja;
 	this->brojSlika=brojSlika;
+}
+
+int Baza::getdir (string dir, vector<string> &files)
+{
+/*    DIR *dp;
+    struct dirent *dirp;
+    if((dp  = opendir(dir.c_str())) == NULL) {
+        cout << "Error(" << errno << ") opening " << dir << endl;
+        return errno;
+    }
+
+    while ((dirp = readdir(dp)) != NULL) {
+        files.push_back(string(dirp->d_name));
+    }
+    closedir(dp);*/
+    return 0;
+}
+
+vector<Uzorak> Baza::ucitajCijelu(){
+	vector<Uzorak> uzorci=vector<Uzorak>();
+	vector<string> files = vector<string>();
+
+
+	return uzorci;
 }
 Uzorak Baza::getUzorak(int osoba, int uzorak){
 	int snimanje=uzorak/2;

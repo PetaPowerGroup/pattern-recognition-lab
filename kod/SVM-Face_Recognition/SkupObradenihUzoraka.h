@@ -7,6 +7,7 @@ class SkupObradenihUzoraka
 {
 public:
 	SkupObradenihUzoraka(Baza);
+	SkupObradenihUzoraka();
 	~SkupObradenihUzoraka(void);
 	void izvuciKorisneZnacajke();
 	void writeToFile();
