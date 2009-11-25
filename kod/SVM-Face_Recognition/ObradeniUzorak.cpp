@@ -22,5 +22,11 @@ std::vector<double> *ObradeniUzorak::getSkupZnacajki(){
 std::string ObradeniUzorak::toString(){
 	std::stringstream out;
 	out<<this->getOznakaRazreda();
+	int i=1;
+	for (std::vector<double>::iterator it = skupZnacajki.begin(); it!=skupZnacajki.end();++it) {
+		if (*it!=0.0)
+			out << " " << i << ":" << *it;
+		++i;
+	}
 	return out.str();
 }

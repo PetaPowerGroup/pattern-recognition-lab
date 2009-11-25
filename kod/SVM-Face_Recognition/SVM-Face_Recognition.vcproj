@@ -246,6 +246,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\IzlucivanjeZnacajki.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ObradeniUzorak.h"
 				>
 			</File>

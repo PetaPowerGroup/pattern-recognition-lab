@@ -12,9 +12,10 @@ Naravno rezultat æe ovisiti o izboru broja znaèajki, za ovo ne znam u kolikoj mj
 */
 #include <vector>
 #include "Uzorak.h"
+#include "IzlucivanjeZnacajki.h"
 
 
-std::vector<double> izluciZnacajke(Uzorak uzorak) {//ova povratna vrijednost bi mi pasala, za pozivanje od tamo od kud sam mislio
+std::vector<double> IzlucivanjeZnacajki::izluciZnacajke(Uzorak uzorak) {//ova povratna vrijednost bi mi pasala, za pozivanje od tamo od kud sam mislio
 
 	// integralna slika - kako bi manje puta pristupal slici i na taj naèin ubrzali ovaj postupak
 	Uzorak integralna_slika(uzorak.getSirina(), uzorak.getVisina());

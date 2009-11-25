@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#define BROJ_LJUDI 371
+#define BROJ_LJUDI 294
 #define BROJ_SLIKA_PO_COVJEKU 4
 #define BROJ_VERZIJA_SLIKE 2
 
@@ -33,6 +33,7 @@ int main()
 
 		SkupObradenihUzoraka nasSkupUzoraka(baza); //stvara skup uzoraka u obliku prikladnom za obradu u memoriji
 		nasSkupUzoraka.izvuciKorisneZnacajke(); //TODO actually napraviti ovo :D   ... Napomena: razmisliti da li æe ovo biti metoda koja æe na mjestu mijenjati klasu ili æe kreirati novu izmijenjenu i vratiti ju
+		cout<<"Znacajke izlucene, pisem u datoteku"<<endl;
 		nasSkupUzoraka.writeToFile();
 
 		//testiranje baze
