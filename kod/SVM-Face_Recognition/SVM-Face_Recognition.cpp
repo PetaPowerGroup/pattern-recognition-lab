@@ -32,7 +32,7 @@ int main()
 		cout<<"postavili ste stazu na: "<<Ucitavanje::getPath()<<endl;
 
 		SkupObradenihUzoraka nasSkupUzoraka(baza); //stvara skup uzoraka u obliku prikladnom za obradu u memoriji
-		nasSkupUzoraka.izvuciKorisneZnacajke(); //TODO actually napraviti ovo :D   ... Napomena: razmisliti da li æe ovo biti metoda koja æe na mjestu mijenjati klasu ili æe kreirati novu izmijenjenu i vratiti ju
+		//nasSkupUzoraka.izvuciKorisneZnacajke(); //TODO actually napraviti ovo :D   ... Napomena: razmisliti da li æe ovo biti metoda koja æe na mjestu mijenjati klasu ili æe kreirati novu izmijenjenu i vratiti ju
 		cout<<"Znacajke izlucene, pisem u datoteku"<<endl;
 		nasSkupUzoraka.writeToFile();
 

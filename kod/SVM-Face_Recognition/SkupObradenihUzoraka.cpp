@@ -25,12 +25,13 @@ SkupObradenihUzoraka::SkupObradenihUzoraka(Baza baza)
 			//Matija-Haar metoda izluèivanja...
 			//izvlacenje znacajki
 			//Treba debuggirati sa breakpointom odavde
-			//std::vector<double> noveZnacajke= izlucivac.izluciZnacajke(trenutniUzorak);
-			//skupZnacajki->insert(skupZnacajki->end(), noveZnacajke.begin(), noveZnacajke.end());
+			std::vector<double> noveZnacajke= izlucivac.izluciZnacajke(trenutniUzorak);
+			skupZnacajki->insert(skupZnacajki->end(), noveZnacajke.begin(), noveZnacajke.end());
 
 			//Ili poznata Lucanin-samo_uzmi_sve metoda izlucivanja znacajki
-			for (int k=0; k<trenutniUzorak.getVelicina(); k++)
-				skupZnacajki->push_back((double)trenutniUzorak.getPixel(k));
+			/*for (int k=0; k<trenutniUzorak.getVelicina(); k++)
+				skupZnacajki->push_back((double)trenutniUzorak.getPixel(k));*/
+
 			uzorci.push_back(*uzorak);
 			
 		}

@@ -22,8 +22,12 @@ Uzorak::Uzorak(int sirina, int visina)
 }
 
 unsigned char Uzorak::getPixel(int red, int stupac)
-{
+{//PAZI, mozda smo krivo "ispravili"
+	/*prije bilo:
+
 	if ( (red<1 || red>visina) && (stupac<1 || stupac>sirina) )
+	*/
+	if ( (red<0 || red>=visina) && (stupac<0 || stupac>=sirina) )
 		throw Greska("GRESKA: Provjera raspona\n\tVrijednost parametra 'red'/'stupac' izvan raspona");
 	
 	return pixeli[red*sirina+stupac];
