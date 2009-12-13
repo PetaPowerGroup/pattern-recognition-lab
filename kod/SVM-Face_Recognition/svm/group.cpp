@@ -92,6 +92,10 @@ int c_group::get_number_elements(){
 	return number_elements;
 }
 
+int c_group::get_number_groups() {
+	return number_groups;
+}
+
 /* u kompozit se nemoze dodati pojedini element
  */
 bool c_group::add_element(Element *e){
@@ -146,7 +150,7 @@ double algorithm::distance(PElement i, PElement j){
 std::pair<c_group*,c_group*> alg1::grouping(std::vector<group*> *grps){
 	int a;
 	int b;
-	double tmp = 0;
+	double tmp = -1;
 	c_group* first = new c_group();
 	c_group* second = new c_group();
 

@@ -1,23 +1,19 @@
 #ifndef TREE_H
 #define TREE_H
 
-//#include "group.h"
+
 #include "classifier.h"
+#include "solver.h"
 
 class kernel;
-/*
-class group;
-class l_group;
-class c_group;
-class algorithm;
-*/
-class smo;
+class solver;
+
 class node {
 protected:
 	node *left; //lijevo dijete
 	node *right; //desno dijete
 	bool leaf; // je li cvor list
-	int  cla;  // roj klase 
+	int  cla;  // broj klase 
 public:
 	node() : left(NULL), right(NULL),leaf(false) {}
    ~node(); 
@@ -28,6 +24,8 @@ public:
 	virtual void create(PLagrange alpha, PDElementi elements, PYpsilon ypsilon, double c) = 0;
 	virtual void set_class(int cl);
 	virtual int get_class();
+	virtual void save(std::ostream &out, std::queue<node*> &q) = 0;
+	virtual void load(std::istream& in, std::queue<node*> &q) = 0;
 };
 
 
@@ -40,20 +38,30 @@ public:
 	~linear_node();
 	node* next(PElement e);
 	void create(PLagrange alpha, PDElementi elements, PYpsilon ypsilon, double c);
+	void save(std::ostream &out, std::queue<node*> &q);
+	void load(std::istream& in, std::queue<node*> &q) ;
 };
 
-/*
+
+
 class nonlinear_node : public node {
 private:
-	nonlinear_node *left;
-	nonlinear_node *right;
+	PLagrange lag;   // spremnik za LAgrangeove multiplikatore mnozene s y
+	PDElementi sv;   // spremnik za potpornje vektore
+	kernel *ken;     // koristeni kernel
+	double b;
+
+	double calculate(PElement e);
 public:
-	bool is_leaf();
-	node* next();
-	void create(std::vector<double>* alpha, Elementi* suports);
+	nonlinear_node():node(){}
+	nonlinear_node(kernel* k):ken(k),node(){}
+	~nonlinear_node();
+	node* next(PElement e);
+	void create(PLagrange alpha, PDElementi elements, PYpsilon ypsilon, double c);
+	void save(std::ostream &out, std::queue<node*> &q);
+	void load(std::istream& in, std::queue<node*> &q);
 };
 
-*/
 
 
 /* zadatak koji se koristi prilikom izgradnje stabla odluke
@@ -73,7 +81,7 @@ class tree {
 private:
 	algorithm *algo;
 	std::queue<task*> tasks;
-	smo *optimizer;
+	solver *optimizer;
 	kernel *ken;
 	double c;
 public:

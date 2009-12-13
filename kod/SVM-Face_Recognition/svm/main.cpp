@@ -3,17 +3,31 @@
 #include "svm.h"
 using namespace std;
 int main() {
-	svm *moj = new svm(new linear_kernel());
-
-	fstream dat("heart_scale.txt",ios::in);
+	svm *moj = new svm(new rbf_kernel(5));
 	
 	// dat - datoteka s uzorcima za ucenje
-	// 2 - velicina uzorka ; ovaj podatak ce kasnije ici u konstruktor
-	moj->train(dat,13);  // treniranje svm-a
-
-	//klasifikacija uzorka 
-	int raz = moj->classify(string("1:0.208333 2:1 3:1 4:-0.358491 5:-0.392694 6:2 7:1 8:-0.0992366 9:1 10:-0.0322581 12:0.333333 13:1"));
-	cout<<"Razred je "<<raz<<endl;
+	fstream dat("lica-sva.txt",ios::in);
+	
+	// 2 - velicina uzorka ; c=1.0 - ovo je zasada hardkodirano
+	long int t1 = time(NULL);
+	moj->train(dat,64,1.0);  // treniranje svm-a
+	long int t2 = time(NULL);
+	std::cout<<"vrijeme treniranja "<<t2-t1<<" sekundi\n";
 	dat.close();
+	fstream dat2 ("svm.txt",ios::out);
+	//moj->save(dat2);
+	dat2.close();
+	dat.close();
+
+	string str;
+	cout<<"Treniranje zavrseno.\nDecizijske funkcije pohranjene u svm.txt\n"<<endl;
+	cout<<"Otvaram datoteku test.txt za testiranje\n\n"<<endl;
+	fstream dat3("test.txt",ios::in);
+	while(getline(dat3,str)){
+		int raz = moj->classify(string(str)); //klasifikacija uzorka
+		cout<<"Uzorak  pripada razredu "<<raz<<endl;
+	}
+	dat3.close();
+	system("pause");
 	return 0;
 }

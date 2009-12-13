@@ -40,18 +40,24 @@ void linear_node::create(PLagrange alpha, PDElementi elements, PYpsilon ypsilon,
 	for (int i = 0; i <alpha->size(); i++) {
 		if (alpha->at(i)!=0) {
 			Element tmp  = *(elements->at(i));
-		    tmp *= alpha->at(i)*ypsilon->at(i);
+		    tmp *= alpha->at(i)*ypsilon->at(i); 
 			*w += tmp;
 		}
 	}
 
+	// normalizacija 
+	Element tmp = pow(*w,2.0);
+	double norm = sqrt(tmp.sum());
+	*w /= norm;
+
 	// b = (1/cnt) * sum(y(i)-w*x(i))
 	int cnt =0;
+	b=0;
 	for (int i =0; i<alpha->size(); i++) {
-		if (alpha->at(i) !=0 && alpha->at(i)!=c) {
+		if (alpha->at(i) > 10E-12 /*&& alpha->at(i)<=c*/) {
 			cnt++;
 			Element tmp = (*w)*(*elements->at(i));
-			b = (*ypsilon)[i] - tmp.sum();
+			b += (*ypsilon)[i] - tmp.sum();
 		}
 	}
 	if (cnt==0)
@@ -74,6 +80,94 @@ node* linear_node::next(PElement e){
 	else 
 		return NULL;
 }
+
+void linear_node::save(std::ostream &out, std::queue<node*> &q){
+	if (leaf) {
+		out<<"CLASS "<<cla<<"\n";
+	}else {
+		out<<"SIZE "<<w->size()<<"\n";
+		out<<"w";
+		for (int i =0; i<w->size(); i++)
+			out<<" "<<(*w)[i];
+		out<<"\n";
+		out<<"b "<<b<<"\n";
+		q.push(left);
+		q.push(right);
+	}
+}
+
+void linear_node::load(std::istream &in, std::queue<node*> &q){
+	std::string str;
+	in>>str;
+	if (str =="CLASS"){
+		in>>cla;
+	}else {
+		int siz=0;
+		in>>str;
+		if (str=="SIZE")
+			in>>siz;
+		w = new Element(siz);
+		for (int i=0; i< siz; i++) 
+			in>>(*w)[i];
+		in>>str;
+		if (str=="b") 
+			in>>b;
+		q.push(new linear_node());
+		q.push(new linear_node());
+	}
+}
+
+
+nonlinear_node::~nonlinear_node(){
+	delete lag;
+	delete sv;
+	delete left;
+	delete right;
+}
+
+double nonlinear_node::calculate(PElement e){
+	double sum=0;
+	for (int i=0; i<lag->size(); i++) {
+		sum += (*lag)[i]*ken->calculate((*sv)[i],e);
+	}
+	return sum;
+}
+
+node* nonlinear_node::next(PElement e){
+	if (leaf)
+		return NULL;
+	double dx = calculate(e)+b;
+	if (dx > 0) 
+		return left;
+	else if (dx < 0) 
+		return right;
+	else 
+		return NULL;
+}
+
+
+void nonlinear_node::create(PLagrange alpha, PDElementi elements, PYpsilon ypsilon, double c){
+	lag = new Lagrange();
+	sv  = new PPElementi();
+	int tmp=-1;
+	for (int i=0; i< alpha->size(); i++) {
+		if ((*alpha)[i]>10E-12 && (*alpha)[i]<=c) {
+			lag->push_back((*alpha)[i]*(*ypsilon)[i]);
+			sv->push_back((*elements)[i]);
+			if (tmp==-1) 
+				tmp = i;
+		}
+	}
+
+   double sum = calculate((*elements)[tmp]);
+   b = (*ypsilon)[tmp] - sum;
+}
+
+void nonlinear_node::save(std::ostream &out, std::queue<node*> &q){}
+
+void nonlinear_node::load(std::istream &in, std::queue<node*> &q){}
+
+
 
 
 task::task(node *no, std::vector<group*> *gr) {
@@ -107,8 +201,11 @@ void tree::process_task(){
 	if (tmp->groups->size()>1) {
 		
 		// grupiranje
+		std::cout<<"   Zapocinje grupiranje\n";
 		std::pair<c_group*, c_group*> g = algo->grouping(tmp->groups);
-		
+		std::cout<<"   Gotovo grupiranje:\n";
+		std::cout<<"   Prva grupa "<<g.first->get_number_groups()<<" razreda\n";
+		std::cout<<"   Druga grupa "<<g.second->get_number_groups()<<" razreda\n";
 		// dohvacanje elemenat prve i druge grupe
 		// i stvaranje niza ypsilon
 		PDElementi el1 = g.first->get_elements();
@@ -118,7 +215,9 @@ void tree::process_task(){
 		el1->insert(el1->end(),el2->begin(),el2->end());
 
 		// optimzacija
+		std::cout<<"   Zapocinje trazenje Lagrangeovih multiplikatora\n";
 		PLagrange alpha = optimizer->optimize(el1,y,c,ken);
+		std::cout<<"   Gotovo trazenje Lagrangeovih multiplikatora\n";
 		node *n = tmp->n;
 
 		// predavanje izracunatih podataka cvoru
@@ -160,7 +259,7 @@ node* tree::train(kernel* ker, algorithm *al, PSamples samp, double ci, int num)
 	ken = ker;
 	c =ci;
 	algo = al;
-	optimizer = new smo();
+	optimizer = new solver();//ovo je lose
 
 	// korijen stabla i pocetni zadatak
 	node* n = ker->create_node();
@@ -171,8 +270,12 @@ node* tree::train(kernel* ker, algorithm *al, PSamples samp, double ci, int num)
 
 	// procesiranje zadataka koji se nalaze u redu na cekanju
 	// mogucnost paralenog rjesenja
-	while (!tasks.empty()) 
+	int broj_zad = 0;
+	while (!tasks.empty()){
+		broj_zad++;
+		std::cout<<"Obradujem zadatak "<<broj_zad<<std::endl;
 		process_task();
+	}
 
 	delete optimizer;
 	

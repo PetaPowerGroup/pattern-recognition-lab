@@ -24,11 +24,16 @@ class smo {
 		double					  b_low;
 		int						i_up;
 		int						i_low;
+		double						*Q;  //kernel matrica
+		bool					    *Qi;
 		double tol;
 		int examine(int i2);
-		bool step(int i1,double f1,int i2);
+		bool step(int i1,int i2);
 		kernel *kern;
 		double function(int i);
+		inline double get_kernel(int i, int j);
+		void	evaluate_kernel_matrix();
+		void	free_kernel_matrix();
 
 	public:
 		smo(){eps = tol = 10E-3;};

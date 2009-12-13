@@ -26,7 +26,7 @@ double* svm::get_array(std::string &str) {
 	return niz;
 }
 
-void svm::train(std::istream &in,int vel){
+void svm::train(std::istream &in,int vel,double c){
 	vel_uz = vel;
 	PSamples sam = new Samples();
 	std::string str;
@@ -40,7 +40,7 @@ void svm::train(std::istream &in,int vel){
 		delete [] niz;
 
 	}
-	train(sam,max,2);
+	train(sam,max,c);
 }
 
 int svm::classify(std::string &pat){
@@ -56,4 +56,18 @@ int svm::classify(std::string &pat){
 			return -1;
 	}
 	return 0;
+}
+
+void svm::save(std::ostream &out){
+	std::queue<node*> q;
+	q.push(root);
+	while(!q.empty()) {
+		node *tmp = q.front();
+		q.pop();
+		tmp->save(out,q);
+	}
+}
+
+void svm::load(std::istream &in){
+//todo
 }

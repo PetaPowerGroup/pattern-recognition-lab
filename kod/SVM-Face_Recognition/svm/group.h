@@ -50,6 +50,7 @@ public:
 	std::vector<group*> *get_groups();
     bool has_single();
     int get_number_elements();
+	int get_number_groups();
     bool add_element(Element *e);
 	bool add_group(group *gr);
 	int get_class();
