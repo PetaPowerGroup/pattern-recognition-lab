@@ -196,6 +196,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\DCTizlucivanje.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Greska.cpp"
 				>
 			</File>
@@ -239,6 +243,10 @@
 			>
 			<File
 				RelativePath=".\Baza.h"
+				>
+			</File>
+			<File
+				RelativePath=".\DCTizlucivanje.h"
 				>
 			</File>
 			<File
