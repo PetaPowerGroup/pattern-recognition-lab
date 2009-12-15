@@ -55,8 +55,8 @@ std::vector<double> IzlucivanjeZnacajki::izluciZnacajke(Uzorak uzorak) {//ova po
 
 	std::vector<double> izracunateZnacajke;//=std::vector<double>();//u ovu listu trpaš vrijednosti znaèajki, kako ih izraèunavaš
 
-	int sirina_okna = 8;  
-	int visina_okna = 8;  // ako je slika velika 64x64 imamo 64 znaèajke, može se poveæavati ili smanjivati ovisno o rezultatima 
+	int sirina_okna = 4;  
+	int visina_okna = 4;  // ako je slika velika 64x64 imamo 64 znaèajke, može se poveæavati ili smanjivati ovisno o rezultatima 
 
 	double tamni, svijetli;
 	double prva_tocka, druga_tocka, treca_tocka, cetvrta_tocka, peta_tocka, sesta_tocka;
@@ -93,7 +93,9 @@ std::vector<double> IzlucivanjeZnacajki::izluciZnacajke(Uzorak uzorak) {//ova po
 				tamni = peta_tocka - cetvrta_tocka - druga_tocka + prva_tocka;
 				svijetli = sesta_tocka - peta_tocka - treca_tocka + druga_tocka;
 			
-				izracunateZnacajke.push_back(svijetli-tamni); // i dobili smo znaèajku
+				double rezultat=(svijetli-tamni)/(sirina_okna*visina_okna/2*255);
+				izracunateZnacajke.push_back(rezultat); // i dobili smo znaèajku
+				assert (rezultat<=1.0 && rezultat>=0.0);
 			} 
 		}
 	// Uzorak integralna_slika potrebno je izbrisati, ali u klasi uzorak nema destruktora. 
