@@ -1,4 +1,4 @@
-odvoji.exe 5 
+odvoji1.exe 5 
 
 ovaj program radi tako da iz "skup_svih_znacajki.txt" uzme prvih 5 uzoraka za svaku klasu,
 i spremi ih u "skup_za_ucenje.txt", a preostalih 3 spremi u "skup_za_testiranje.txt"
