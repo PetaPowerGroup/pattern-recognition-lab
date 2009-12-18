@@ -1,3 +1,13 @@
+odvoji.exe 50%
+
+ovaj program radi tako da iz "skup_svih_znacajki.txt" uzme prvih 50% uzoraka za svaku 
+klasu,i spremi ih u "skup_za_ucenje.txt", a preostale spremi u "skup_za_testiranje.txt".
+Primjer za parne brojeve: 50% -> ukupno 4 uzorka -> 2 uèenje, 2 testiranje
+Primjer za neparne brojeve: 50% -> ukupno 3 uzorka -> 1 uèenje, 2 testiranje
+dakle sve uzorke koji su ispod i jednako zadanom postotku stavi u uèenje.
+5/9 = 0,55 > 0,5 , dakle peti od devet uzorka ide u testiranje. 
+
+
 odvoji1.exe 5 
 
 ovaj program radi tako da iz "skup_svih_znacajki.txt" uzme prvih 5 uzoraka za svaku klasu,
