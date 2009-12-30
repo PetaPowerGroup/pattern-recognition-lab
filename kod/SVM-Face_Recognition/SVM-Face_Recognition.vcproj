@@ -212,6 +212,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PCAizlucivanje.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SkupObradenihUzoraka.cpp"
 				>
 			</File>
@@ -259,6 +263,10 @@
 			</File>
 			<File
 				RelativePath=".\ObradeniUzorak.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PCAizlucivanje.h"
 				>
 			</File>
 			<File
