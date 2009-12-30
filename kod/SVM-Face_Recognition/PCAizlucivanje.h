@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include "boost/shared_ptr.hpp"
+#include "C:/Program Files/extern/include"
 class Uzorak;
 
 class IzlucivanjeZnacajki{
