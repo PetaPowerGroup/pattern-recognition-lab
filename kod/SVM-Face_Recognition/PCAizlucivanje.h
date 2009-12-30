@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "boost/shared_ptr.hpp"
-#include "C:/Program Files/extern/include"
+#include "C:/Program Files/MATLAB71/extern/include"
 class Uzorak;
 
 class IzlucivanjeZnacajki{
