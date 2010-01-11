@@ -1,24 +1,20 @@
 % uzorak je matrica uèitana iz c++a
-function tr = pca(uzorak);
-n = 130;
+function r_uzorak = pca(uzorak);
 
+n = floor(sqrt(130)); %broj znaèajki
 m = uzorak-mean(mean(uzorak)).*ones(size(uzorak,1),size(uzorak,2));
 cov = m*m';
 N = size(cov,1);
+[v, lambda] = eig(cov);
+e = zeros(N,n);
 
-cov = sym(cov);
-I = sym(eye(N));
-lambda = sym('lambda');
-x = solve('det(cov-lambda.*I)=0', 'lambda');
-
-znac = wkeep(sort(x,'descend'),n,'l');
-
-tr = zeros(N,n);
-for i = 1:n
-    L = sym(znac(i).*eye(N));
-    A = sym('A');
-    tr(:,i) = solve('(cov-L)*A=0', 'A');
+for i=1:n
+    [x,y,z] = find(lambda == max(max(lambda)), 1, 'first');
+    lambda(x,:) = [];
+    e(:,i) = v(:,x);
+    v(:,x) = [];
 end
-tr = tr';
 
-return tr;
+r_uzorak = e'*uzorak;
+
+return r_uzorak;
