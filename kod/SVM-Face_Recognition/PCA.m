@@ -1,12 +1,12 @@
 % uzorak je matrica uèitana iz c++a
-function r_uzorak = pca();
+function pca();
 
 %uèitavanje iz txt fajla
 %pretpostavio sam da je broj uzoraka 2400(8x300)
 fid = fopen('svm/test1.txt','r');
-for i=1:2400
+for i=1:300
 %C = scanf(fid, '%d');
-    for j=1:4096
+    for j=1:2400
         data = fscanf(fid, '%d:%f32');
         uzorak(j,i)=data(2);
     end
@@ -36,4 +36,14 @@ end
 
 r_uzorak = e'*uzorak;
 
-return r_uzorak;
+fid = fopen('svm/r_uzorak.txt','w');
+for i=1:2400
+%C = fprintf(fid, '%d ', i);
+    for j=1:4096
+        fprintf(fid, '%d:%f32 ',j, uzorak(j,i));
+    end
+    fprintf(fid, '\n');
+end
+fclose(fid);
+
+return;
