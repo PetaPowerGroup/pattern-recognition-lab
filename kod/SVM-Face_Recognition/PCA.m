@@ -2,6 +2,7 @@
 function r_uzorak = pca();
 
 %uèitavanje iz txt fajla
+%pretpostavio sam da je broj uzoraka 2400(8x300)
 fid = fopen('svm/test1.txt','r');
 for i=1:2400
 %C = scanf(fid, '%d');
@@ -14,10 +15,14 @@ end
 fclose(fid);
 
 %size(uzorak)=4096x2400
-
+cov = zeros(4096,4096);
 n = 130; %broj znaèajki, matrica 4096x2400 se reducira na 130x2400
-m = uzorak-mean(mean(uzorak)).*ones(size(uzorak,1),size(uzorak,2));
-cov = m*m';
+for i=1:2400
+    m = uzorak(:,i)-mean(mean(uzorak(:,i))).*ones(4096,1);
+    cov = cov + m*m';
+end
+cov = cov/2399;
+
 N = size(cov,1);    %N=4096
 [v, lambda] = eig(cov);
 e = zeros(N,n);
