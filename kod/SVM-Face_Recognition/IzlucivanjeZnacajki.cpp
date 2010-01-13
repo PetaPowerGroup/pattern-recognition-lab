@@ -18,7 +18,7 @@ Naravno rezultat æe ovisiti o izboru broja znaèajki, za ovo ne znam u kolikoj mj
 using namespace std;
 
 
-std::vector<double> IzlucivanjeZnacajki::izluciZnacajke(Uzorak uzorak) {//ova povratna vrijednost bi mi pasala, za pozivanje od tamo od kud sam mislio
+std::vector<double> IzlucivanjeZnacajki::izluciZnacajke(Uzorak uzorak, int sirina_okna, int visina_okna) {//ova povratna vrijednost bi mi pasala, za pozivanje od tamo od kud sam mislio
 /*
 	// integralna slika - kako bi manje puta pristupal slici i na taj naèin ubrzali ovaj postupak
 	vector< vector<int> > integrirana_slika(uzorak.getVisina()+1);
@@ -111,8 +111,8 @@ std::vector<double> IzlucivanjeZnacajki::izluciZnacajke(Uzorak uzorak) {//ova po
 */
 	std::vector<double> izracunateZnacajke;//=std::vector<double>();//u ovu listu trpaš vrijednosti znaèajki, kako ih izraèunavaš
 
-	int sirina_okna = 8;  
-	int visina_okna = 8;  // ako je slika velika 64x64 imamo 64 znaèajke, može se poveæavati ili smanjivati ovisno o rezultatima 
+	//int sirina_okna = 8;  
+	//int visina_okna = 8;  // ako je slika velika 64x64 imamo 64 znaèajke, može se poveæavati ili smanjivati ovisno o rezultatima 
 
 	double tamni, svijetli;
 

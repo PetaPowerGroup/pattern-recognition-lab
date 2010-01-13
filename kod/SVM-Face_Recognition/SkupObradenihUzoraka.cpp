@@ -11,10 +11,8 @@
 #include <fstream>
 using namespace std;
 
-SkupObradenihUzoraka::SkupObradenihUzoraka(Baza baza)
+SkupObradenihUzoraka::SkupObradenihUzoraka(Baza baza, bool izluciHaarom, int sirina_okna, int visina_okna)
 {
-	IzlucivanjeZnacajki izlucivac;
-
 	uzorci=vector<ObradeniUzorak>();
 	for (int i=0; i<baza.getBrojOsoba(); ++i){
 		for (int j=0; j<baza.getBrojUzoraka(); ++j){
@@ -25,12 +23,14 @@ SkupObradenihUzoraka::SkupObradenihUzoraka(Baza baza)
 			//Matija-Haar metoda izluèivanja...
 			//izvlacenje znacajki
 			//Treba debuggirati sa breakpointom odavde
-			std::vector<double> noveZnacajke= izlucivac.izluciZnacajke(trenutniUzorak);
-			skupZnacajki->insert(skupZnacajki->end(), noveZnacajke.begin(), noveZnacajke.end());
-
-			//Ili poznata Lucanin-samo_uzmi_sve metoda izlucivanja znacajki
-			/*for (int k=0; k<trenutniUzorak.getVelicina(); k++)
-				skupZnacajki->push_back((double)trenutniUzorak.getPixel(k));*/
+			if (izluciHaarom){
+				std::vector<double> noveZnacajke= izlucivac.izluciZnacajke(trenutniUzorak, sirina_okna, visina_okna);
+				skupZnacajki->insert(skupZnacajki->end(), noveZnacajke.begin(), noveZnacajke.end());
+			} else {
+				//Ili poznata Lucanin-samo_uzmi_sve metoda izlucivanja znacajki
+				for (int k=0; k<trenutniUzorak.getVelicina(); k++)
+				skupZnacajki->push_back((double)trenutniUzorak.getPixel(k));
+			}
 
 			uzorci.push_back(*uzorak);
 			
@@ -49,7 +49,7 @@ SkupObradenihUzoraka::~SkupObradenihUzoraka(void)
 {
 }
 
-void SkupObradenihUzoraka::izvuciKorisneZnacajke(){//TODO
+void SkupObradenihUzoraka::izvuciKorisneZnacajke(){//obavlja se u konstruktoru zapravo, tako je ispalo jednostavnije
 }
 
 void SkupObradenihUzoraka::writeToFile(){
