@@ -12,6 +12,7 @@ public:
 	~SkupObradenihUzoraka(void);
 	void izvuciKorisneZnacajke();
 	void writeToFile();
+	int getBrojZnacajki();
 private:
 	std::vector<ObradeniUzorak> uzorci;
 	IzlucivanjeZnacajki izlucivac;

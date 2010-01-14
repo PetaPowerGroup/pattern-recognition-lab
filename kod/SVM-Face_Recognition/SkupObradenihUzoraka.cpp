@@ -69,3 +69,8 @@ void SkupObradenihUzoraka::writeToFile(){
 	}
 	File.close();*/
 }
+
+int SkupObradenihUzoraka::getBrojZnacajki(){
+	std::vector<double> *skupZnacajki=uzorci[0].getSkupZnacajki();
+	return skupZnacajki->size();
+}

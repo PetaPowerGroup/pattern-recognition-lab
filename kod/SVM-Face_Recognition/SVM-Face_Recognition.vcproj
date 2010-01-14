@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\Moji projekti\biblioteke\boost_1_40_0&quot;;&quot;C:\Program Files (x86)\boost\boost_1_39&quot;;C:\Boost\boost_1_38_0;&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;;&quot;C:\Program Files (x86)\boost\boost_1_41_0&quot;;D:\biblioteke\boost\boost_1_41_0"
+				AdditionalIncludeDirectories="&quot;E:\Moji projekti\biblioteke\boost_1_40_0&quot;;&quot;C:\Program Files (x86)\boost\boost_1_39&quot;;C:\Boost\boost_1_38_0;&quot;E:\FER\Semestar7\Raspoznavanje uzoraka\Projekt\kod\SVM-Face_Recognition&quot;;&quot;C:\Program Files (x86)\boost\boost_1_41_0&quot;;D:\biblioteke\boost\boost_1_41_0;&quot;C:\Program Files (x86)\MATLAB71\extern\include&quot;"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="3"
@@ -60,7 +60,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="&quot;C:\Program Files\boost\boost_1_41_0&quot;"
+				AdditionalDependencies="libmx.lib libmat.lib libeng.lib"
+				AdditionalLibraryDirectories="&quot;C:\Program Files\boost\boost_1_41_0&quot;;&quot;C:\Program Files (x86)\MATLAB71\extern\lib\win32\microsoft\msvc71&quot;"
 				GenerateDebugInformation="true"
 				AssemblyDebug="1"
 				TargetMachine="1"
@@ -114,7 +115,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\boost\boost_1_39&quot;"
+				AdditionalIncludeDirectories="&quot;C:\Program Files (x86)\boost\boost_1_39&quot;;&quot;C:\Program Files (x86)\MATLAB71\extern\include&quot;;D:\biblioteke\boost\boost_1_41_0"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				WarningLevel="3"
@@ -131,6 +132,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="libmx.lib libmat.lib libeng.lib"
+				AdditionalLibraryDirectories="&quot;C:\Program Files (x86)\MATLAB71\extern\lib\win32\microsoft\msvc71&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"

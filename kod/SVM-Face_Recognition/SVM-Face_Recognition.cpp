@@ -7,6 +7,15 @@
 
 #include <iostream>
 #include <conio.h>
+#include <stdlib.h>
+#include "engine.h" // ovo je include fajl za MATLABov engine
+
+#include <direct.h>
+
+#include <string>
+#include <sstream>
+
+#define  BUFSIZE 256
 
 #define BROJ_LJUDI 294
 #define BROJ_SLIKA_PO_COVJEKU 4
@@ -18,12 +27,61 @@ string Ucitavanje::path="";//gdje se na disku nalazi kazalo sa slikama lica.
 bool izluciHaarom=true;
 int sirina_okna=8;
 int visina_okna=8;
+int konacniBrojZnacajkiZaPCA=20;
+int brojOsoba=294;
 
-int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica, a drugi 1 za izluèivanje znaèajki Haarom, a 0 za ne, zatim ide sirina okna pa visina okna za Haara
+int pozoviPCA(int brojUzoraka, int brojZnacajki, int konacniBrojZnacajki){
+
+	//dobavi kazalo
+	char *path = NULL;
+	path = _getcwd(NULL, 0); // or _getcwd
+	if ( path != NULL)
+		printf("%s\n", path);
+
+	Engine *ep; // pointer na MATLAB-ov engine
+	char buffer[BUFSIZE];
+
+	// pokretanje MATLAB engine-a, uz standardne provjere ispravnosti
+	if (!(ep = engOpen("\0"))) {
+		fprintf(stderr, "\nCan't start MATLAB engine\n");
+		return EXIT_FAILURE;
+	}
+
+	engOutputBuffer(ep, buffer, BUFSIZE); // definiramo string varijablu za MATLABov output
+	
+	
+	string promjeniKazalo("cd('");
+	promjeniKazalo.append(path);
+	promjeniKazalo.append("')");
+	engEvalString(ep, promjeniKazalo.c_str());
+	printf("%s", buffer+2); // ispisujemo dobiveni rezultat
+
+	stringstream ss;
+	ss<<"PCA("<<brojUzoraka<<","<<brojZnacajki<<","<<konacniBrojZnacajki<<")";
+	string naredba=ss.str();
+	printf("Naredba za pozivanje PCA je: %s\n", naredba.c_str());
+	//system("pause");
+	engEvalString(ep, naredba.c_str()); // saljemo string na izracunavanje
+
+	printf("%s", buffer+2); // ispisujemo dobiveni rezultat
+
+    //fgetc(stdin);
+	
+	engClose(ep); // gasimo engine
+	return EXIT_SUCCESS;
+}
+
+int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica
+	//drugi 0 za PCA, 1 za izluèivanje znaèajki Haarom, a 2 za oboje
+	//zatim ide sirina okna
+	//pa visina okna za Haara
+	//broj konacnih znacajki za PCA
+	//broj osoba (maksimum 294)
 {
-	Baza baza(BROJ_LJUDI, BROJ_SLIKA_PO_COVJEKU, BROJ_VERZIJA_SLIKE);
+	if (argc==7 && atoi(argv[6])<=BROJ_LJUDI) brojOsoba=atoi(argv[6]);
+	Baza baza(brojOsoba, BROJ_SLIKA_PO_COVJEKU, BROJ_VERZIJA_SLIKE);
 	try
-	{	
+	{
 		string noviPath("D:\\face");
 		int izlucivanje=1;
 		if (argc<2){
@@ -36,10 +94,12 @@ int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica,
 			izlucivanje=atoi(argv[2]);
 			if (izlucivanje) izluciHaarom=true;
 			else izluciHaarom=false;
-			cout<<"Izluci znacajke je: "<<izluciHaarom<<endl;
-			if (argc==5){
+			cout<<"Izluci znacajke je: "<<izlucivanje<<endl;
+			if (argc==7){
 				sirina_okna=atoi(argv[3]);
 				visina_okna=atoi(argv[4]);
+				konacniBrojZnacajkiZaPCA=atoi(argv[5]);
+				cout<<"Sirina, visina, konacni broj znacajki su "<<sirina_okna<<", "<<visina_okna<<", "<<konacniBrojZnacajkiZaPCA<<", "<<endl;
 			}
 		}
 		if (noviPath.compare("")!=0){
@@ -51,7 +111,10 @@ int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica,
 		//nasSkupUzoraka.izvuciKorisneZnacajke(); //TODO actually napraviti ovo :D   ... Napomena: razmisliti da li æe ovo biti metoda koja æe na mjestu mijenjati klasu ili æe kreirati novu izmijenjenu i vratiti ju
 		cout<<"Znacajke izlucene, pisem u datoteku"<<endl;
 		nasSkupUzoraka.writeToFile();
-		cout<<"Gotovo."<<endl;
+		if (izlucivanje!=1)//1 je samo za Haara pa tada ne koristimo PCA
+			pozoviPCA(baza.getBrojOsoba()*baza.getBrojUzoraka(),nasSkupUzoraka.getBrojZnacajki(),konacniBrojZnacajkiZaPCA);
+		cout<<"Gotovo. Pritisnite enter..."<<endl;
+		//system("pause");
 		//_getch();
 		//testiranje baze
 		/*
@@ -91,7 +154,6 @@ int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica,
 	{
 		cout<<"Greška uhvaæena, nepoznata"<<endl;
 	}
-
 	return 0;
 
 }
