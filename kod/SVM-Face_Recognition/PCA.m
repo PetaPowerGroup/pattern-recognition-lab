@@ -1,6 +1,9 @@
 % uzorak je matrica uèitana iz c++a
-function pca(k,a,n);
+function pca();
 
+k=800;
+a=49;
+n=20;
 %uèitavanje iz txt fajla
 %pretpostavio sam da je broj uzoraka 2400(8x300)
 uzorak = zeros(a,k);

@@ -1,0 +1,26 @@
+#MATLAB Preferences
+#Thu Jan 14 18:21:10 CET 2010
+FileBrowserFiveColumnWidths=S[150 100 75 150 400]
+ReplaceMatchCase=Bfalse
+TextPrintingPrinterName=Shp LaserJet 1000
+ReplaceWordWrap=Bfalse
+EditorNamedBufferOption=I1
+RLOrderB2_Wb_B2=S0:1:2:
+RLWidthB2_Wb_B2_2=I125
+ReplaceWholeWord=Bfalse
+RLWidthB2_Wb_B2_1=I125
+RLWidthB2_Wb_B2_0=I125
+RLPrevInitB2_Wb_B2=Btrue
+EditorMRU9=S
+EditorMRU8=S
+EditorMRU7=S
+EditorMRU6=S
+EditorMRU5=S
+CopyOptions.HonorCOPrefs=Bfalse
+EditorMRU4=SG:\\garch\\zarada.m
+EditorMRU3=SC:\\Program Files\\MATLAB71\\toolbox\\symbolic\\@sym\\solve.m
+EditorMRU2=SF:\\FER\\FER-diplomski_studij\\1.semestar\\RU\\ciklus III\\ru-projekt\\PCA_mcr\\PCA\\PCA.m
+EditorMRU1=SF:\\FER\\FER-diplomski_studij\\1.semestar\\RU\\ciklus III\\ru-projekt\\PCA.m
+RLHiddenB2_Wb_B2=I24
+FileBrowserFiveColumnOrder=S[0 1 2 3 4]
+FileBrowserViewMode=I0

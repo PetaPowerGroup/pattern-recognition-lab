@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Layout>
+   <Version Major="2" Minor="0"/>
+   <Group Alphabetize="no" Dock="no" PropertyClass="com.mathworks.mde.editor.EditorGroup" Show="yes" Title="Editor">
+      <Location Context="undocked" External="yes" Height="461" Type="floating" Width="576" X="173" Y="185"/>
+      <Location Context="document" Height="365" Maximized="yes" Type="floating" Width="568" X="0" Y="0"/>
+      <Frame StatusBarShowing="yes" TitlesShowing="yes">
+         <Location External="yes" Height="461" Type="floating" Width="576" X="173" Y="185"/>
+         <Documents Title="Editor"/>
+      </Frame>
+      <DocumentArea Arrangement="maximized" Bar="bottom" Empty="no" MaxBarWidth="128" Showing="yes"/>
+   </Group>
+</Layout>
