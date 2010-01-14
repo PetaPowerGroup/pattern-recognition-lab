@@ -27,16 +27,16 @@ svm-train -s 0 -c 100 -g 0.1 -v 5
 # kreshvm_train.exe 63 0.5 1
 # kreshvm_train parametri
 # drugi parametar - konstanta C
-5
+2
 
 # drugi parametar - tip svm-a
 #  1 - linearni
 #  2 - rbf kernel
 #  3 - polinomni kernel
-1
+2
 
 # treæi parametar - gama za rbf, stupanj za polinomni kernel, nebitno za linearni svm
-4.3
+0.1
 
 # testiranje našeg klasifikatora
 kreshvm_test.exe
@@ -53,7 +53,8 @@ odvoji.exe 80%
 # 0 - PCA
 # 1 - Haar
 # 2 - Haar+PCA
-1
+# 3 - bez izluèivanja
+0
 
 # širina Haar okna
 8
@@ -61,7 +62,7 @@ odvoji.exe 80%
 8
 
 # broj konacnih znacajki za PCA
-30
+130
 
 # broj osoba (maksimum 294)
-100
+294
