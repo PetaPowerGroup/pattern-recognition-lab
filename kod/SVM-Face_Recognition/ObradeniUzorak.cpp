@@ -24,7 +24,7 @@ std::string ObradeniUzorak::toString(){
 	out<<this->getOznakaRazreda();
 	int i=1;
 	for (std::vector<double>::iterator it = skupZnacajki.begin(); it!=skupZnacajki.end();++it) {
-		if (*it!=0.0)
+		//if (*it!=0.0)
 			out << " " << i << ":" << *it;
 		++i;
 	}

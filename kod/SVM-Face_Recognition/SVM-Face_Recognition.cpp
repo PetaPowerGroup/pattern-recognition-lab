@@ -68,17 +68,19 @@ int pozoviPCA(int brojUzoraka, int brojZnacajki, int konacniBrojZnacajki){
     //fgetc(stdin);
 	
 	engClose(ep); // gasimo engine
+	printf("Odradio matlab poziv PCA funkcije\n");
 	return EXIT_SUCCESS;
 }
 
 int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica
-	//drugi 0 za PCA, 1 za izluèivanje znaèajki Haarom, a 2 za oboje
+	//drugi 0 za PCA, 1 za izluèivanje znaèajki Haarom, 2 za oboje, a 3 za ništa
 	//zatim ide sirina okna
 	//pa visina okna za Haara
 	//broj konacnih znacajki za PCA
 	//broj osoba (maksimum 294)
 {
 	if (argc==7 && atoi(argv[6])<=BROJ_LJUDI) brojOsoba=atoi(argv[6]);
+	cout<<"Broj ljudi je: "<<brojOsoba<<endl;
 	Baza baza(brojOsoba, BROJ_SLIKA_PO_COVJEKU, BROJ_VERZIJA_SLIKE);
 	try
 	{
@@ -92,7 +94,7 @@ int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica
 		} else {
 			noviPath=argv[1];
 			izlucivanje=atoi(argv[2]);
-			if (izlucivanje) izluciHaarom=true;
+			if (izlucivanje==1 || izlucivanje==2) izluciHaarom=true;
 			else izluciHaarom=false;
 			cout<<"Izluci znacajke je: "<<izlucivanje<<endl;
 			if (argc==7){
@@ -111,7 +113,7 @@ int main(int argc, char* argv[])//prvi argument lokacija kazala sa slikama lica
 		//nasSkupUzoraka.izvuciKorisneZnacajke(); //TODO actually napraviti ovo :D   ... Napomena: razmisliti da li æe ovo biti metoda koja æe na mjestu mijenjati klasu ili æe kreirati novu izmijenjenu i vratiti ju
 		cout<<"Znacajke izlucene, pisem u datoteku"<<endl;
 		nasSkupUzoraka.writeToFile();
-		if (izlucivanje!=1)//1 je samo za Haara pa tada ne koristimo PCA
+		if (izlucivanje==0 || izlucivanje==2)//1 je samo za Haara, a 3 je za ništa pa tada ne koristimo PCA
 			pozoviPCA(baza.getBrojOsoba()*baza.getBrojUzoraka(),nasSkupUzoraka.getBrojZnacajki(),konacniBrojZnacajkiZaPCA);
 		cout<<"Gotovo. Pritisnite enter..."<<endl;
 		//system("pause");

@@ -53,7 +53,7 @@ odvoji.exe 80%
 # 0 - PCA
 # 1 - Haar
 # 2 - Haar+PCA
-2
+1
 
 # širina Haar okna
 8
