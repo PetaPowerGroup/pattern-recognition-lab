@@ -1,3 +1,6 @@
 800
-48
-30
+49
+10
+
+// komentar: prvi red k=800, drugi red a=49, 
+// treæi red n = 20
