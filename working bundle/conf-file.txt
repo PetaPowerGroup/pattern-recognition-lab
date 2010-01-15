@@ -27,13 +27,13 @@ svm-train -s 0 -c 100 -g 0.1 -v 5
 # kreshvm_train.exe 63 0.5 1
 # kreshvm_train parametri
 # drugi parametar - konstanta C
-10
+0.1
 
 # drugi parametar - tip svm-a
 #  1 - linearni
 #  2 - rbf kernel
 #  3 - polinomni kernel
-2
+1
 
 # treæi parametar - gama za rbf, stupanj za polinomni kernel, nebitno za linearni svm
 0.1
@@ -65,10 +65,10 @@ odvoji.exe 80%
 30
 
 # broj osoba (maksimum 294)
-100
+50
 
 # obavi izluèivanje znaèajki
 # 1 - raèunat æe ih iz baze slika
 # 0 - tražit æe postojeæu skup_svih_znacajki.txt datoteku i preskoèiti fazu izluèiavnja
 # (olakšava podešavanje parametara jer znatno ubrzava izvoðenje programa)
-0
+1
