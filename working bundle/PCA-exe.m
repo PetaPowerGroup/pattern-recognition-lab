@@ -1,6 +1,12 @@
 % uzorak je matrica uèitana iz c++a
-function pca(k,a,n);
+function pca();
 
+fid = fopen('parametri.txt','r');
+    p = fscanf(fid, '%d');
+fclose(fid);
+k=p(1)
+a=p(2)
+n=p(3)
 %uèitavanje iz txt fajla
 %pretpostavio sam da je broj uzoraka 2400(8x300)
 uzorak = zeros(a,k);
