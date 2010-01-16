@@ -33,7 +33,7 @@ for i=1:k
     m = uzorak(:,i)-mean(mean(uzorak(:,i))).*ones(a,1);
     cov = cov + m*m';
 end
-cov = cov/8;
+cov = cov/(k-1);
 
 N = size(cov,1);    %N=4096
 [v, lambda] = eig(cov);
